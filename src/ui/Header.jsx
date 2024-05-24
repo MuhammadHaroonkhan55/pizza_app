@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import SearchOrder from '../features/order/SearchOrder';
-import Username from '../features/user/username';
+import Profile from './Profile';
 
 const Header = () => {
   return (
@@ -10,7 +10,7 @@ const Header = () => {
         Fast Pizza
       </Link>
       <SearchOrder />
-      <Username />
+      <Profile />
     </header>
   );
 };
