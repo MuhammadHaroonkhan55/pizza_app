@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from './AuthContext';
 import { login, signup } from '../../services/apiAuth';
 
 function AuthForm() {
@@ -8,24 +9,21 @@ function AuthForm() {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
   const navigate = useNavigate();
+  const { login: loginUser } = useAuth();
 
   async function handleSubmit(e) {
     e.preventDefault();
     try {
-      setError(null); // Reset error state
+      setError(null);
       if (isLogin) {
         await login({ email, password });
       } else {
         await signup({ email, password });
       }
-      // Clear email and password fields on successful login/signup
-      setEmail('');
-      setPassword('');
-      // Navigate to menu or dashboard
-      navigate('/menu'); // Change '/menu' to the path you want to navigate to
+      loginUser();
+      navigate('/menu');
     } catch (error) {
-      setError(error.message); // Set error state if authentication fails
-      console.error(`${isLogin ? 'sign in' : 'sign up'} failed:`, error);
+      setError(error.message);
     }
   }
 

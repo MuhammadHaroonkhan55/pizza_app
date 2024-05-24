@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import CreateUser from '../features/user/CreateUser';
 import Button from './Button';
-import LoginForm from '../features/auth/LoginForm';
+import AuthForm from '../features/auth/AuthForm';
 function Home() {
   const username = useSelector((state) => state.user.username);
   return (
@@ -21,7 +21,7 @@ function Home() {
         </Button>
       )}
 
-      <LoginForm />
+      <AuthForm />
     </div>
   );
 }

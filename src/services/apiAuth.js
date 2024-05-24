@@ -14,6 +14,13 @@ export async function signup({ email, password }) {
     email,
     password,
   });
-  if (error) throw error;
+  if (error) throw new Error('Account already exists with this email');
   return data;
+}
+export async function logout() {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    throw new Error(error.message);
+  }
 }
