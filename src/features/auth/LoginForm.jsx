@@ -16,11 +16,11 @@ function AuthForm() {
       } else {
         await signup({ email, password });
       }
-      // Clear email and password fields on successful login/signup
+
       setEmail('');
       setPassword('');
     } catch (error) {
-      setError(error.message); // Set error state if authentication fails
+      setError(error.message);
       console.error(`${isLogin ? 'sign in' : 'sign up'} failed:`, error);
     }
   }
